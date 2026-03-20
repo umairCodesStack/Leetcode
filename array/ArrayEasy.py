@@ -250,7 +250,59 @@ def getTriplets(nums):
       for i in range(c+1, len(nums)):
             triplets.append([firstTriplet[0],firstTriplet[1],nums[i]])
       return triplets 
-print(getTriplets([0,1,4,6,7,10]))     
+
+def maxArea( height):
+      length=len(height)-1
+      i=0 
+      j=length
+      highArea=min(height[i],height[j])*j
+      while(i<j):
+            if(height[i]<height[j]):
+                  area=height[i]*(j-i)
+                  i+=1
+                  if(area>highArea):
+                        highArea=area
+            else:
+                  area=height[j]*(j-i)
+                  j-=1
+                  if(area>highArea):
+                        highArea=area 
+            
+      return highArea
+
+def diagonalSum( mat):
+      n=len(mat[0])
+      i=0
+      j=n-1
+      s=0
+      while(i<n or j>=0):
+            if(i!=j):
+                  s=s+mat[i][i]+mat[i][j]
+            else: 
+                  s+=mat[i][i]            
+            i+=1
+            j-=1
+      return s   
+
+def finalPrices( prices):
+      answer=[]
+      length=len(prices)
+      for i in range(length):
+            discount=0
+            for j in range(i+1,length):
+                  if(prices[j]<=prices[i]):
+                        discount=prices[j]
+                        break
+            answer.append(prices[i]-discount)
+      return answer            
+                         
+def isPalendrome(s):
+      reverse=s[::-1]
+      if (reverse==s):
+            return True
+      else:
+            return False
+print(isPalendrome("ada"))     
 #print(sortPeople(names = ["Mary","John","Emma"], heights = [180,165,170]))
 #print(getDigits(15))                   
 #print(mapWordWeights( words = ["a","b","c"], weights = [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]))
