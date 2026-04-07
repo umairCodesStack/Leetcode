@@ -302,8 +302,44 @@ def isPalendrome(s):
             return True
       else:
             return False
-print(isPalendrome("ada"))     
+#print(isPalendrome("ada"))     
 #print(sortPeople(names = ["Mary","John","Emma"], heights = [180,165,170]))
 #print(getDigits(15))                   
 #print(mapWordWeights( words = ["a","b","c"], weights = [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]))
 #print(twoSum( nums = [2,7,11,15], target = 9))
+def isAnagram(s,t):
+      len1=len(s)
+      len2=len(t)
+      if(len1!=len2):
+            return False
+      flag=True
+      i=0
+      while (flag and i<len1):
+            cnt=s.count(s[i])
+            cnt1=t.count(s[i])
+            if (cnt==cnt1):
+                  flag=True
+            else: 
+                  return False
+            i+=1      
+      return flag
+def countWithStrictingElem(nums):
+      count=0
+      for x in nums:
+            if(isStrict(x,nums)):
+                  count+=1
+      return count            
+
+def isStrict(x,nums):
+      rule1=False
+      rule2=False
+      for i in nums:
+            if(i<x):
+                  rule1=True
+            if(i>x):
+                  rule2=True
+            if (rule1 and rule2):
+                  return True                  
+                  
+      return True if rule1 and rule2 else False                              
+print(isStrict(11,[11,7,2,15]))            
