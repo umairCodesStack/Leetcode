@@ -66,3 +66,13 @@ def sumUptoN(n):
     return ans        
 
 print(sumUptoN(6))
+arr=[1,2,3,4,5,6,7,8]
+length=len(arr)
+i=0
+while i<length:
+    if(arr[i]%2==0):
+        arr.remove(arr[i])
+        length=len(arr)
+        i-=1
+    i+=1        
+print(arr)    
