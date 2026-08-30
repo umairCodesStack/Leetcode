@@ -130,3 +130,27 @@ def maxFreqSum(s: str) -> int:
                 
     return max(freq1.values())+max(freq2.values())            
 print(maxFreqSum("aeioiu"))
+
+def threeSum(arr,target):
+    length=len(arr)
+    for i in range(length):
+        for j in range(i+1,length):
+            for k in range(j+1,length):
+                if(arr[i]+arr[j]+arr[k]==target):
+                    ans=[arr[i],arr[j],arr[k]]
+    return ans                
+
+def longestConsective(nums):
+    prev=nums[0]
+    length=len(nums)
+    i=1
+    maxLen=0
+    nums.sort()
+    while i<length:
+        temp=[prev]
+        while nums[i]==prev+1:
+            temp.append(nums[i])
+            i+=1
+        maxLen=max(len(temp),maxLen)
+        i+=1    
+    return maxLen

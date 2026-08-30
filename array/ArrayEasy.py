@@ -350,6 +350,111 @@ def maxProfit( prices):
 
 print(isStrict(11,[11,7,2,15]))            
 
+def hasDuplicate(nums):
+        i=1
+        length=len(nums)
+        while i < length:
+            if nums[i] in nums[:i]:  
+                return True
+            i+=1    
+        return False   
+print(hasDuplicate([1,2,3,4,5,6,7,8,9,10]))
+def encode(strs):
+        res="$"
+        for x in strs:
+            res=x + '$'           
+        return res
+print(encode(["Hello","World"]))
+def decode(s: str) -> List[str]:
+            res=[]
+            temp=""
+            for x in s:
+                
+                if(x=="$"):    
+                    res.append(temp)
+                    temp=""
+                else:
+                    temp+=x      
+            return res
+print(decode(encode(["Hello","wsdd"])))
+def productExceptSelf(nums):
+      prod=1
+      for x in nums:
+            if x!=0:
+                  prod*=x
+      res=[]            
+      for x in nums:
+            if(x!=0):
+                  res.append(prod//x)
+            else:
+                  res.append(prod)
+      return res
+                        
+def findMissing(nums):
+      i=min(nums)
+      end=max(nums)
+      mpp={}
+      res=[]
+      while i<end:
+            mpp[i]=1
+            i+=1
+      for a in range(i,end):
+            if a not in nums:
+                  res.append(a)
+      return res                                  
+def longestConseq(nums):
+      if len(nums)==0:
+            return 0
+      start=min(nums)
+      st=set(nums)
+      cnt=1
+      i=1
+      for x in st:     
+            if start+i in st:
+                  cnt+=1
+            i+=1      
+      return cnt
+print(longestConseq([2,20,4,10,3,4,5]))            
+
+def majorityElement( nums):
+      freq={}
+      n=len(nums)
+      for x in nums:
+            freq[x]=freq.get(x,0)+1
+      for key,value in freq.items():
+            if value>=n/2:
+                  return key
+      return -1      
+print("major elem",majorityElement([2,2,1,1,1,2,2]))
+def containDuplicates(n):
+      freq={}
+      for x in n:
+            freq[x]=freq.get(x,0)
+            if freq[x]==0:
+                  freq[x]=freq.get(x)+1
+            else:
+                  return True
+      return False
+print(containDuplicates([2,2,1,1,1,2,2]))            
+def isHappy(n):
+      freq={}
+      for i in range(0,10):
+            freq[i]=i*i
+      res=n
+      while res>=10:
+            for x in getDigits(res):
+                  res+=freq[x]
+      return True if res==1 else False            
+def getDigits(n):
+      res=[]
+      while n!=0:
+           res.append(n%10)
+           n=n//10
+      return res 
+print(isHappy(19))     
+                       
+        
+
 
 def countPairs(nums, k):
       length=len(nums)
