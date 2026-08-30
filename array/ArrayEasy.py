@@ -342,4 +342,46 @@ def isStrict(x,nums):
                   return True                  
                   
       return True if rule1 and rule2 else False                              
+def maxProfit( prices):
+      minimum=min(prices[:len(prices)-1])
+      min_idx=prices.index(minimum)
+      max_num=max(prices[min_idx:])
+      return abs(max_num-minimum)
+
 print(isStrict(11,[11,7,2,15]))            
+
+
+def countPairs(nums, k):
+      length=len(nums)
+      count=0
+      for i in range(0,length):
+            for j in range(i+1,length):
+                  if (nums[i]==nums[j]) and (i*j%k==0):
+                        count+=1
+      return count                  
+
+def bruteForceSubArrayFinding(nums):
+    length = len(nums)
+
+    for st in range(length):
+        for end in range(st, length):
+            for i in range(st, end + 1):
+                print(nums[i], end=" ")
+            print("")
+
+
+bruteForceSubArrayFinding([1, 2, 3, 4, 5])
+def sumOddLengthSubarrays(arr):
+      total=0
+      length=len(arr)
+      for st in range(length):
+            for end in range(st,length):
+                  temp=[]
+                  tempLen=0
+                  for i in range(st,end+1):
+                        temp.append(arr[i])
+                        tempLen+=1
+                  if tempLen%2!=0:
+                        total+=sum(temp)
+      return total   
+print(sumOddLengthSubarrays([1,4,2,5,3]))                             
