@@ -365,7 +365,7 @@ def encode(strs):
             res=x + '$'           
         return res
 print(encode(["Hello","World"]))
-def decode(s: str) -> List[str]:
+def decode(s):
             res=[]
             temp=""
             for x in s:
@@ -437,14 +437,16 @@ def containDuplicates(n):
       return False
 print(containDuplicates([2,2,1,1,1,2,2]))            
 def isHappy(n):
-      freq={}
-      for i in range(0,10):
-            freq[i]=i*i
+      print(1+1+1+1+1+1+1)
+      if n==1 or n==7:
+            return True
       res=n
-      while res>=10:
+      while res!=1:
+            temp=0
             for x in getDigits(res):
-                  res+=freq[x]
-      return True if res==1 else False            
+                  temp+=x*x
+            res=temp      
+      return True if res==1 or res==7 else False            
 def getDigits(n):
       res=[]
       while n!=0:
@@ -470,12 +472,13 @@ def bruteForceSubArrayFinding(nums):
 
     for st in range(length):
         for end in range(st, length):
+            temp=[]
             for i in range(st, end + 1):
-                print(nums[i], end=" ")
-            print("")
+               temp.append(nums[i])
+            print("sub-array is",temp, end='\n')
 
 
-bruteForceSubArrayFinding([1, 2, 3, 4, 5])
+bruteForceSubArrayFinding([5,1,6])
 def sumOddLengthSubarrays(arr):
       total=0
       length=len(arr)
@@ -490,3 +493,85 @@ def sumOddLengthSubarrays(arr):
                         total+=sum(temp)
       return total   
 print(sumOddLengthSubarrays([1,4,2,5,3]))                             
+
+
+def breakDigits(num):
+      res=[]
+      tem=num
+      while tem//10!=0:
+            dig=tem%10
+            res.append(dig)
+            tem=tem//10
+      return res
+def separateDigits(nums):
+      res=[]
+      for x in nums:
+            if x>10:
+                  temp=[]
+                  temp=getDigits(x)
+                  for j in range(len(temp)-1,-1,-1):
+                        res.append(temp[j])
+            else:            
+                  res.append(x)
+      return res                       
+            
+print(separateDigits([13,25,83,77]))
+
+def numOfStrings(patterns, word):
+      out=0
+      for x in patterns:
+            if x in word:
+                  out+=1
+      return out   
+
+arr=[1,2,3,5,6]
+print(arr[arr.index(max(arr[1:len(arr)]))])
+
+
+def maxProfit( prices):
+      if len(prices)<=1:
+            return 0
+      maxIdx=prices.index(max(prices[1:len(prices)]))
+      maxP=0
+      for i in range(maxIdx):
+                if prices[maxIdx]- prices[i] > maxP:
+                    maxP=prices[maxIdx]-prices[i]
+      return maxP        
+
+def maxProfit(prices):
+      lnth=len(prices)
+      if lnth<=1:
+            return 0
+      maxP=0
+      for i in range(lnth):
+           if max(prices[i:lnth])-prices[i]>maxP:
+                 maxP=max(prices[i:lnth])-prices[i]
+      return maxP 
+def concatWithReverse( nums):
+      res=nums
+      for j in range(len(nums)-1,-1,-1):
+            res.append(nums[j])
+      return res      
+        
+def longestPalindrome(self, s):
+        """
+        :type s: str
+        :rtype: str
+        """     
+def findDegrees(matrix):
+      res=[]
+      for x in matrix:
+            res.append(x.count(1))
+      return res
+      
+def subsetXORSum(nums):
+      total=0
+      length=len(nums)
+      for st in range(length):
+            for end in range(st,length):
+                  temp=[]
+                  for i in range(st,end+1):
+                        temp.append(nums[i])
+                  print("sub array is ",temp, end="\n")      
+      return total                        
+subsetXORSum([5,1,6])
